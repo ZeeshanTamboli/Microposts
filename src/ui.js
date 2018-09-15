@@ -33,6 +33,39 @@ class UI {
 
     this.post.innerHTML = htmlContent;
   }
+
+  showAlert(message, classes) {
+    this.clearAlert();
+
+    // Create div
+    const div = document.createElement('div');
+    // Add classes
+    div.className = classes;
+    // Add text
+    div.appendChild(document.createTextNode(message));
+    // Get parent
+    const container = document.querySelector('.postsContainer');
+    // Insert alert div
+    container.insertBefore(div, this.post);
+
+    // Timeout
+    setTimeout(() => {
+      this.clearAlert();
+    }, 3000);
+  }
+
+  clearAlert() {
+    const currentAlert = document.querySelector('.alert');
+
+    if(currentAlert) {
+      currentAlert.remove();
+    }
+  }
+
+  clearFields() {
+    this.titleInput.value = '';
+    this.bodyInput.value = '';
+  }
 }
 
 export const ui = new UI();
