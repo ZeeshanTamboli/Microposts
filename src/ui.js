@@ -57,7 +57,7 @@ class UI {
   clearAlert() {
     const currentAlert = document.querySelector('.alert');
 
-    if(currentAlert) {
+    if (currentAlert) {
       currentAlert.remove();
     }
   }
@@ -65,6 +65,13 @@ class UI {
   clearFields() {
     this.titleInput.value = '';
     this.bodyInput.value = '';
+  }
+
+  // Fill form for edit state
+  fillForm(data) {
+    this.titleInput.value = data.title;
+    this.bodyInput.value = data.body;
+    this.idInput.value = data.id;
   }
 }
 
