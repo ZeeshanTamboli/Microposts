@@ -5,10 +5,13 @@ class UI {
     this.bodyInput = document.querySelector('#body');
     this.idInput = document.querySelector('#id');
     this.postSubmit = document.querySelector('.post-submit');
+    this.cancelButton = document.querySelector('.post-cancel');
     this.formState = 'add';
   }
 
   showPosts(posts) {
+    this.cancelButton.style.display = 'none';
+
     let htmlContent = '';
 
     posts.forEach(post => {
@@ -80,17 +83,7 @@ class UI {
       this.postSubmit.textContent = 'Update Post';
       this.postSubmit.className = 'post-submit btn btn-warning btn-block';
 
-      // Create cancel button
-      const button = document.createElement('button');
-      button.className = 'post-cancel btn btn-light btn-block';
-      button.appendChild(document.createTextNode('Cancel Edit'));
-
-      // Get parent
-      const cardForm = document.querySelector('.card-form');
-      // Get element to insert before
-      const formEnd = document.querySelector('.form-end');
-      // Insert before
-      cardForm.insertBefore(button, formEnd);
+      this.cancelButton.style.display = 'block';
     } else {
       this.postSubmit.textContent = 'Post It';
       this.postSubmit.className = 'post-submit btn btn-primary btn-block';
